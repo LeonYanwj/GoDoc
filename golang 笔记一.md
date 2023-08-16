@@ -61,5 +61,115 @@ func main(){
 
 
 
+# golang常用命令
+
+* **go build：编译构建可执行文件**
+* **go run：直接运行代码文件**
+
+* go clean：移除对象文件（清除go build生成的可执行文件）
+
+* go env：打印出golang当前环境变量
+
+* go fmt：运行gofmt进行进行格式化
+
+* go get：下载安装包依赖包
+
+  go get [github.com/go-sql-driver/mysql](https://github.com/go-sql-driver/mysql)
+
+* go list：列出包
+
+* go install：编译并安装依赖包
+
+  
+
+# 注意事项
+
+go应用使用的`包`和`模块`来组织代码，包对应到文件系统就是文件夹，模块就是**go**的源文件。一个包中会有多个模块，或者多个子包。
+
+# golang标识符、关键字、命名规则
+
+标识符的英文是<font color="orange">identitfter</font>，通俗的讲，就是给变量、常量、函数、方法、结构体、切片、接口起名字。
+
+## 标识符的组成
+
+1. 标识符由数字、字母下划线组成
+2. 只能以字母和下户线开头
+3. 标识符区分大小写
+
+## 举例说明标识符的命名
+
+### 正确命名：
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    var name string
+    var age int
+    var _sys string
+}
+```
+
+### 错误命名：
+
+```go
+package main
+
+import "fmt"
+
+func () {
+    var 2name string
+    var ~age int
+    // .....
+}
+```
+
+### go语言关键字
+
+go语言提供了25个关键字，如下所示：
+
+| break    | default     | func   | interface | select |
+| -------- | ----------- | ------ | --------- | ------ |
+| case     | defer       | go     | map       | struct |
+| clean    | else        | goto   | package   | swith  |
+| const    | fillthrough | if     | range     | type   |
+| continue | for         | import | return    | var    |
+
+
+
+# go语言命名规范
+
+**Go是一门区分大小写的语言**
+
+## 包名称
+
+保持<font color="oriange">package</font>的名字和目录保持一致，尽量采取有意义的包名。包名应该为<font color="red">小写</font>单词，不小使用下划线或者混合大小写。
+
+```go
+package main
+package service
+```
+
+## 错误处理
+
+```go
+// 错误写法
+if err != nil {
+    // 错误处理
+} else {
+    // 正确处理
+}
+
+// 正确写法
+
+if err != nil {
+    // 错误处理
+    return 
+}
+// 正常代码
+```
+
 
 
