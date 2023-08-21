@@ -173,4 +173,132 @@ if err != nil {
 
 
 
-![image-20230816181636450](assets/image-20230816181636450.png)
+# golang变量
+
+变量通俗理解成将一个`值`保存成一个可识别的标识符
+
+## 声明变量
+
+Go语言中变量需要声明后才能使用，同一个作用域中不支持重复声明，并且Go语言的变量声明后必须要使用（这点和Python不太一样）
+
+**变量声明的语法**
+
+```go
+var bianliang type
+```
+
+**例如**：
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    var name string
+    var age int
+    
+    // 引用变量
+    name = "Leon"
+    age = 18
+}
+```
+
+
+
+**变量初始化的语法**
+
+```go
+var bianliang <type> = <>
+```
+
+* <font color="orange"> `var` </font>: 声明变量的关键字
+* <font color="orange">`bianliang`</font>: 变量的成
+* <font color="orange">`type`</font>: 变量类型
+
+**例如**：
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    var name string = "Leon"
+    var age int = 18
+    var ok bool = true 
+    
+    // 也可以这样赋值
+    var (
+    	name string = "Leon"
+        age int = 18
+        ok bool = true
+    )
+}
+
+
+```
+
+
+
+**类型推断**：
+
+```go
+package main 
+
+func main() {
+    // 根据后面的值，就知道是什么类型
+    var name = "Leon"
+    var age = 18
+}
+```
+
+
+
+**批量初始化**：
+
+```go
+package main
+
+func main() {
+    var name, age = "Leon", 18 //这里是和python一样的
+}
+```
+
+
+
+**短变量声明**：
+
+在`函数内部`，可以使用`:=`运算符对变量进行声明和初始化
+
+```go
+package main
+
+func main() {
+    // 这些既不用写类型，也不用写var
+    name := "Leon"
+    age := 18
+    ok := true
+}
+```
+
+
+
+**匿名变量**
+
+如果我们收到了多个变量，有一些变量使用不到，可以使用下划线，表示变量名称，这种变量叫匿名变量。例如
+
+```go
+package main
+
+import "fmt"
+
+func getNameandAge()(string, int) {
+    return "Leon", 18
+}
+
+func main() {
+    name, _ := getNameandAge()
+}
+```
+
