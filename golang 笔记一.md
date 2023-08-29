@@ -179,7 +179,7 @@ if err != nil {
 
 ## 声明变量
 
-Go语言中变量需要声明后才能使用，同一个作用域中不支持重复声明，并且Go语言的变量声明后必须要使用（这点和Python不太一样）
+<font color="red">Go语言中变量需要声明后才能使用</font>，同一个作用域中不支持重复声明，并且Go语言的变量声明后必须要使用（这点和Python不太一样）
 
 **变量声明的语法**
 
@@ -228,7 +228,7 @@ func main() {
     var age int = 18
     var ok bool = true 
     
-    // 也可以这样赋值
+    // 也可以这样赋值(批量声明)
     var (
     	name string = "Leon"
         age int = 18
@@ -302,3 +302,90 @@ func main() {
 }
 ```
 
+
+
+## 常量
+
+相对于变量，常量是恒定不变的值，多用于定义程序运行期间不会改变的那些值。常量的声明和变量非常类似。只是将`var`改成了`const`，常量是在定义的是否赋值。
+
+```
+package main
+
+import "fmt"
+
+func main() {
+	const name string = "Leon"
+	const age int = 18
+	const PI float32 = 3.14
+	fmt.Println("name", name)
+	fmt.Println("age", age)
+	fmt.Println("PI", PI)
+
+	// 批量声明常量
+	const (
+		STATUSOK = 200
+		NOTFOUND = 404
+	)
+	fmt.Println("status:", STATUSOK)
+	fmt.Println("notfound:", NOTFOUND)
+}
+```
+
+### iota
+
+`iota`是go语言的计数器，只能在常量的表达式中使用。`iota`在`const`关键字出现时将被重置为`0`。`const`中每新增一行常量声明将使`iota`计数一次
+
+```
+package main
+
+import "fmt"
+
+func main() {
+	// 如果批量声明常量时，如果没有赋值，默认就和上一行一致
+	const (
+		n1 = 100
+		n2
+		n3
+	)
+
+	fmt.Print("n1: ", n1, "n2: ", n2, "n3: ", n3)
+
+	const (
+		a1 = iota
+		a2
+		_
+		a3
+	)
+
+	const (
+		c1 = iota
+		c2 = 100
+		c3 = iota
+	)
+
+	const (
+		d1, d2 = iota + 1, iota + 2
+		d3, d4 = iota + 1, iota + 2
+	)
+	fmt.Println("d1: ", d1)
+	fmt.Println("d2: ", d2)
+	fmt.Println("d3: ", d3)
+	fmt.Println("d4: ", d4)
+
+	//定义数量级
+	const (
+		_  = iota
+		KB = 1 << (10 * iota)
+		MB = 1 << (10 * iota)
+		GB = 1 << (10 * iota)
+		TB = 1 << (10 * iota)
+	)
+
+}
+```
+
+**结果**：
+
+![image-20230829144335297](assets/image-20230829144335297.png)
+
+![image-20230829144355787](assets/image-20230829144355787.png)
