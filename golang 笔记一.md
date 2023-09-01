@@ -8,10 +8,8 @@
 
 Golang1.17.13 
 
-	* windows [https://go.dev/dl/go1.17.13.windows-amd64.msi](https://go.dev/dl/go1.17.13.windows-amd64.msi)
-	* MacOs [https://go.dev/dl/go1.17.13.darwin-amd64.pkg](https://go.dev/dl/go1.17.13.darwin-amd64.pkg)
-
-
+* windows [https://go.dev/dl/go1.17.13.windows-amd64.msi](https://go.dev/dl/go1.17.13.windows-amd64.msi)
+* MacOS https://go.dev/dl/go1.17.13.darwin-amd64.pkg
 
 ## 设置环境变量
 

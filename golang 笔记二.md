@@ -6,6 +6,46 @@
 
 其中，`uint8`就是我们熟知的`byte`型，`int16`对应C语言中的`short`型，`int64`对应C语言中的`long`型。
 
+```go
+package main
+
+import "fmt"
+
+func main() {
+	s1 := "晏"
+	fmt.Printf("%s\n", s1)
+	fmt.Printf("%q\n", s1)
+
+	var l1 int8 = 12
+	var l2 int16 = 22
+	var l3 int32 = 32
+	var l4 int16 = 64
+	var l5 uint = 10
+	var l6 uint64 = 20
+	fmt.Printf("%v\n", l1)
+	fmt.Printf("%v\n", l2)
+	fmt.Printf("%v\n", l3)
+	fmt.Printf("%v\n", l4)
+	fmt.Printf("%v\n", l5)
+	fmt.Printf("%v\n", l6)
+}
+```
+
+输出结果：
+
+```
+晏  
+"晏"
+12  
+22  
+32  
+64  
+10
+20
+```
+
+
+
 
 
 ## 1.2 浮点型
@@ -111,6 +151,9 @@ func main() {
 		是大帅
 		B
 	`
+    fmt.Println(s4)
+    
+    // 字符串的常规操作
 	res := strings.Split(s3, "\\")
 	fmt.Printf("res: %v\n", res)
 
@@ -128,5 +171,62 @@ func main() {
 
 	fmt.Printf("s7: %v\ns8: %v", s7, s8)
 }
+
+// 输出结果：
+/* 
+s1: hello
+s2: 你好
+s3: D:\bsm\Navicat_CN 
+                晏伟健
+                是大帅
+                B
+
+res: [D: bsm Navicat_CN]
+17
+15
+[39532 20255 20581]
+s7: y
+s8: 121
+*/
 ```
 
+### 1.5.4 byte和rune类型
+
+组成每个字符串的元素叫做“字符”，可以通过遍历或者单个获取字符串元素获得字符。 字符用单引号（’）包裹起来，如：
+
+```
+var a := '中'
+
+var b := 'x'
+
+// Go 语言的字符有以下两种：
+// uint8类型，或者叫 byte 型，代表了ASCII码的一个字符。
+// rune类型，代表一个 UTF-8字符。
+```
+
+
+
+### 1.5.5 修改字符串
+
+要修改字符串，需要先将其转换成`[]rune或[]byte`，完成后再转换为`string`。无论哪种转换，都会重新分配内存，并复制字节数组。
+
+```go
+    func changeString() {
+        s1 := "hello"
+        // 强制类型转换
+        byteS1 := []byte(s1)
+        byteS1[0] = 'H'
+        fmt.Println(string(byteS1))
+
+        s2 := "博客"
+        runeS2 := []rune(s2)
+        runeS2[0] = '狗'
+        fmt.Println(string(runeS2))
+    }
+```
+
+
+
+### 1.5.6 类型转换
+
+Go语言中只有强制类型转换，没有隐式类型转换。该语法只能在两个类型之间支持相互转换的时候使用。Go中的类型强制转换和Python比较类似。
