@@ -126,3 +126,30 @@ for true {
 
 # 4. 循环语句range
 
+Go语言中可以使用for range遍历`数组`、`切片`、`字符串`、`map`及`通道`。通过for range遍历的返回值有以下规律：
+
+1. 数组，切片，字符串返回索引和值。
+2. map返回键和值
+3. 通道高只返回通道内的值
+
+```go
+package main
+
+import "fmt"
+
+func main () {
+    s := "Hello 晏伟健"
+    for _,v := range s {
+        // _：匿名变量，直接丢弃
+        fmt.Printf("%c\n",v)
+    }
+}
+```
+
+
+
+# 5. 循环控制Goto、Break、Continue
+
+Break、continue和Python中是一样的。
+
+Goto可以理解成传送符。
