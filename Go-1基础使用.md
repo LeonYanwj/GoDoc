@@ -19,7 +19,7 @@ golang从1.11开始就已经使用go mod方式管理项目，所以对GOPATH依�
 
 * 能够执行`go env`命令执行就可以了
 
-    ![image-20230811214310963](/Users/yanweijian/Library/Application Support/typora-user-images/image-20230811214310963.png)
+    ![image-20230811214310963](./assets/image-20230811214310963.png)
 
   
 
@@ -35,7 +35,7 @@ golang从1.11开始就已经使用go mod方式管理项目，所以对GOPATH依�
 * 创建项目目录（通过golang或者是vscode创建即可）
 * 在项目根目录执行`go mod init <path>`进行初始化项目即可（golang会自动创建此目录）
 
-![image-20230811215117171](/Users/yanweijian/Library/Application Support/typora-user-images/image-20230811215117171.png)
+![image-20230811215117171](./assets/image-20230811215117171.png)
 
 # golang运行第一段代码
 
