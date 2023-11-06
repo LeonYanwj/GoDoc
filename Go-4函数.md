@@ -340,11 +340,59 @@ main(){
 
 ## 2.3 结构体和指针
 
-
+结构体是指类型，赋值就是拷贝
 
 
 
 ## 2.4 结构体初始化
+
+
+
+
+
+## 2.5 构造函数
+
+返回一个结构体变量的函数
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type person struct {
+	name string
+	age  int
+}
+
+// 构造函数，约定成俗构造函数用new开头
+// 返回的是结构体还是结构体指针
+// 当结构体里面的字段比较少的时候，可以直接返回结构体，当字段多的时候返回指针。因为结构体是值类型，在做赋值操作的时候就是讲内存复制粘贴
+func newPerson(name string, age int) *person {
+	return &person{
+		name: name,
+		age:  age,
+	}
+}
+
+func main() {
+	p1 := newPerson("yanweijian", 20)
+	//p2 := newPerson("mayaru", 20)
+	fmt.Printf("%v", p1.name)
+}
+
+```
+
+
+
+## 方法和接受者
+
+定义格式：
+
+```go
+
+```
 
 
 
