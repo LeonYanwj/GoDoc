@@ -206,8 +206,8 @@ fmt.Println(m)
 ## 3.3 new和make的区别
 
 1. make和new都是用来申请内存的
-2. new很少用，一般用来给基本数据类型申请内存（string、int），返回的是指针
-3. make是用来给（slice、map、channel）申请内存的，返回的是这三个类型奔上
+2. new很少用，一般用来给值类型申请内存（string、int，stuck），返回的是指针
+3. make是用来给（slice、map、channel）申请内存的，返回的是这三个类型本身
 
 
 
