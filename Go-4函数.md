@@ -348,6 +348,22 @@ main(){
 
 ## 2.4 结构体初始化
 
+```go
+可以使用键值对进行结构体的初始化
+p1 := person {
+    name: "张伟",
+    age: 18,
+    city: "beijing",
+}
+
+也可以在初始化的时候进行简写，只写入值的信息，但是需要按照顺序来完成
+p2 := person {
+    "李宏伟",
+    28,
+    "上海",
+}
+```
+
 
 
 
@@ -388,13 +404,43 @@ func main() {
 
 
 
-## 方法和接受者
+# 3 方法和接收者
 
-定义格式：
+在之前的文档中，我们已经记录了Go中函数和结构体的使用方法了。在面向对象的开发语言中，结构体有点像初始化函数，这时候是不是还需要类方法呢？接下来我们介绍的方法和接收者，就有点类似于面向对象过程中实例化，和实例对象了。
+
+
+
+## 3.1 方法的定义
 
 ```go
+func (形参 定义的结构体) methodName(参数列表)(返回值列表){}
 
+package main
+
+type person struct {
+    name string 
+    age int
+}
+
+func newPerson(name string, age int) *person {
+    return &person{
+        name: name,
+        age: age,
+    }
+}
+
+// person这个结构体的方法，为了方便记忆可以将p这个变量连接成python中的self
+func (p person) eat() {
+    fmt.Println("eat xxx")
+}
+
+func main(){
+    p1 := newPerson("yanweijian", 18)
+    p1.eat()
+}
 ```
+
+
 
 
 
