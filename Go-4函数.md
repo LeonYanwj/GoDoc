@@ -402,6 +402,69 @@ func main() {
 
 ```
 
+## 2.6 结构体匿名字段
+
+```go
+// 结构体中的字段不能重复，所以匿名字段的结构体只能应用于简单的描述当中
+type simple struct {
+	string
+	int
+}
+
+func main() {
+    s1 := simple{
+        "yanweijian",
+        18,
+    }
+    fmt.Println(s1.string)
+    fmt.Println(s1.int)
+}
+```
+
+## 2.7 结构体嵌套
+
+```go
+type address struct {
+	city    string
+	provice string
+}
+
+// 在定义的结构体字段中引用其他结构体
+type person struct {
+	name string
+	age  int
+	addr address
+}
+
+func main () {
+    p1 := person{
+        name: "yanweijian",
+        age: 18,
+        addr: {
+            city: "hefei",
+            provice: "anhui"
+        }
+    }
+    // 通过.的方式获取addr这个字段下的属性
+    fmt.Prinln(p1.addr.city)
+}
+
+// 匿名嵌套结构体
+type address struct {
+	city    string
+	provice string
+}
+
+// 在定义的结构体字段中引用其他结构体
+type person struct {
+	name string
+	age  int
+	address           // 直接使用
+}
+```
+
+## 2.8 结构体与json
+
 
 
 # 3 方法和接收者
@@ -413,7 +476,7 @@ func main() {
 ## 3.1 方法的定义
 
 ```go
-func (形参 定义的结构体) methodName(参数列表)(返回值列表){}
+func (接收者变量 接收者类型) 方法名称(参数列表)(返回值列表){}
 
 package main
 
@@ -422,6 +485,7 @@ type person struct {
     age int
 }
 
+// 初始化函数
 func newPerson(name string, age int) *person {
     return &person{
         name: name,
@@ -430,6 +494,7 @@ func newPerson(name string, age int) *person {
 }
 
 // person这个结构体的方法，为了方便记忆可以将p这个变量连接成python中的self
+// person是eat这个方法的接受着。这表示person有了eat这个方法
 func (p person) eat() {
     fmt.Println("eat xxx")
 }
@@ -440,7 +505,74 @@ func main(){
 }
 ```
 
+## 3.2 值接收者和指针接收者
+
+```go
+package main
+
+import "fmt"
+
+type person struct {
+	name string
+	age  int
+}
+
+func newPerson(name string, age int) *person {
+	return &person{
+		name: name,
+		age:  age,
+	}
+}
+
+// 值接收者
+func (p person) sleep() {
+	p.age++
+}
+
+func main() {
+	p1 := newPerson("yanweijian", 18)
+	fmt.Println(p1.age)
+	p1.sleep()
+	fmt.Println(p1.age)
+}
+// 执行了sleep方法后p1这个对象的age还是18
+```
 
 
 
+```go
+package main
+
+import "fmt"
+
+type person struct {
+	name string
+	age  int
+}
+
+func newPerson(name string, age int) *person {
+	return &person{
+		name: name,
+		age:  age,
+	}
+}
+
+// 值接收者
+func (p *person) sleep() {
+	p.age++
+}
+
+func main() {
+	p1 := newPerson("yanweijian", 18)
+	fmt.Println(p1.age)
+	p1.sleep()
+	fmt.Println(p1.age)
+}
+// 执行了sleep方法后p1这个对象的age已经是19了
+```
+
+什么时候用指针接收者，什么时候用值接收者呢？
+
+1. 需要修改接收者中的值
+2. 接收者是拷贝代价较大的对象
 

@@ -124,14 +124,14 @@ func main() {
 
 ### 1.4 字符串
 
-| 占位符 |                         说明                         |
-| :----: | :--------------------------------------------------: |
-|   %s   |       <font color="red">正常输出字符串</font>        |
-|   %q   |        字符串带双引号，字符串中的引号带转义符        |
-|  %#q   | 字符串带反引号，如果字符串内有反引号，就用双引号代替 |
-|   %x   |            将字符串转换为小写的16进制格式            |
-|   %X   |            将字符串转换为大写的16进制格式            |
-|  % x   |                  带空格的16进制格式                  |
+|                            占位符                            |                         说明                         |
+| :----------------------------------------------------------: | :--------------------------------------------------: |
+|                              %s                              |       <font color="red">正常输出字符串</font>        |
+|                              %q                              |        字符串带双引号，字符串中的引号带转义符        |
+| xxxxxxxxxx func main() {    var sliceMap = make(map[string][]string, 3)    fmt.Println(sliceMap)    fmt.Println("after init")    key := "中国"    value, ok := sliceMap[key]    if !ok {        value = make([]string, 0, 2)    }    value = append(value, "北京", "上海")    sliceMap[key] = value    fmt.Println(sliceMap)}go | 字符串带反引号，如果字符串内有反引号，就用双引号代替 |
+|                              %x                              |            将字符串转换为小写的16进制格式            |
+|                              %X                              |            将字符串转换为大写的16进制格式            |
+|                             % x                              |                  带空格的16进制格式                  |
 
 ```go
 package main
